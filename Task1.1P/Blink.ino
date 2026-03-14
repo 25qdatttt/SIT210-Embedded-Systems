@@ -2,29 +2,11 @@ const int porch = 5;
 const int hallway = 8;
 const int button = 11;
 
-void setupPins();
-void checkButton();
-void turnPorch();
-void turnHallway();
-
-void setup()
-{
-  setupPins();
-}
-
-void loop()
-{
-  checkButton();
-}
-
 void setupPins()
 {
   pinMode(porch, OUTPUT);
   pinMode(hallway, OUTPUT);
   pinMode(button, INPUT_PULLUP);
-
-  digitalWrite(porch, LOW);
-  digitalWrite(hallway, LOW);
 }
 
 void checkButton()
@@ -33,7 +15,6 @@ void checkButton()
   {
     turnPorch();
     turnHallway();
-    delay(500);
   }
 }
 
@@ -49,4 +30,14 @@ void turnHallway()
   digitalWrite(hallway, HIGH);
   delay(60000);
   digitalWrite(hallway, LOW);
+}
+
+void setup()
+{
+  setupPins();
+}
+
+void loop()
+{
+  checkButton();
 }
