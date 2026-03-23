@@ -1,4 +1,4 @@
-Task 3.1 Trigger
+# Task 3.1 Trigger
 
 In this project, a light triggered notification system is created using Arduino Nano 33 IoT and BH1750 light sensor. The system measures the light level in a terrarium and sends an email notification when sunlight hits the sensor and then stops hitting the sensor, which helps the owner to track whether the terrarium has received enough sunlight throughout the day.
 
