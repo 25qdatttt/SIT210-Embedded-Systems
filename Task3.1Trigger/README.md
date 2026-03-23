@@ -1,1 +1,5 @@
+Task 3.1 Trigger
 
+In this project, a light triggered notification system is created using Arduino Nano 33 IoT and BH1750 light sensor. The system measures the light level in a terrarium and sends an email notification when sunlight hits the sensor and then stops hitting the sensor, which helps the owner to track whether the terrarium has received enough sunlight throughout the day.
+
+The program is based on a modular programming approach in which the program code is divided into small focused functions. connectWiFi() function is responsible for connecting the board with the WiFi network. The checkLight() function reads the value of lux and determines if the state of the light has changed. The function that accomplishes this is the notify() function that sends an HTTP request to the IFTTT Webhooks service and subsequently triggers an email to the address registered. This project shows how embedded systems can be combined with web automation services in order to build simple but practical IoT notification systems.
