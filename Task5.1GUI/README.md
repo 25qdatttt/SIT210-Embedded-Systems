@@ -1,1 +1,5 @@
+# Task 5.1P - Creating a GUI.
 
+This project uses Python and Tkinter to develop a graphical user interface (GUI) on a Raspberry Pi 4 to manage three LEDs that indicate the various rooms in the house of Linda. The system allows the user to select a room through the interface and switches on the corresponding LED and switches off the other two, which can be seen as a simplistic smart home lighting system.
+
+To make things organised, the code is divided into small functions. The control led() routine is the logic controlling the lighting, by checking all three gpios and enabling the LED of the room of choice and disabling the others, so that no more than one light is lit at any given time. When the user is done, the exit_app() function de-GPIO pins up and closes the window. The Tkinter GUI provides three radio buttons about each room (Living Room, Bathroom, and Closet) and an Exit button, providing the user with a basic interface to operate the hardware. This project demonstrates how a Python GUI and a combination with GPIO control can be used to create a simple yet functional embedded system interface.
