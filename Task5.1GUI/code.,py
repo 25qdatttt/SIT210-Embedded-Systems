@@ -27,19 +27,13 @@ window = tk.Tk()
 window.title("Light Control - Linda")
 window.geometry("320x260")
 
-tk.Label(window, text="Select a room to turn on the light:",
-         font=("Arial", 13, "bold")).pack(pady=15)
+tk.Label(window, text="Select a room to turn on the light:", font=("Arial", 13, "bold")).pack(pady=15)
 
 selected = tk.StringVar()
 
 for room in LED_PINS.keys():
-    tk.Radiobutton(
-        window, text=room, variable=selected,
-        value=room, font=("Arial", 12),
-        command=lambda r=room: control_led(r)
-    ).pack(anchor="w", padx=70, pady=5)
+    tk.Radiobutton(window, text=room, variable=selected, value=room, font=("Arial", 12), command=lambda r=room: control_led(r)).pack(anchor="w", padx=70, pady=5)
 
-tk.Button(window, text="Exit", command=exit_app,
-          bg="red", fg="white", font=("Arial", 11)).pack(pady=20)
+tk.Button(window, text="Exit", command=exit_app, bg="red", fg="white", font=("Arial", 11)).pack(pady=20)
 
 window.mainloop()
