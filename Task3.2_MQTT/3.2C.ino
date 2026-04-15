@@ -24,6 +24,17 @@ void connectWiFi() {
 }
 
 void callback(char* topic, byte* payload, unsigned int length) {
+  String message = "";
+  for (unsigned int i = 0; i < length; i++) {
+    message += (char)payload[i];
+  }
+
+  Serial.print("Message received on topic: ");
+  Serial.println(topic);
+  Serial.print("Message: ");
+  Serial.println(message);
+  Serial.println();
+
   if (String(topic) == "ES/Wave") {
     digitalWrite(led1, HIGH);
     digitalWrite(led2, HIGH);
