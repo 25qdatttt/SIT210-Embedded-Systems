@@ -4,9 +4,9 @@ import time
 
 app = Flask(__name__)
 
-CLIENT_ID = "dirdKOS3EvQgr4mi2s90sar1RoBp4HMT"
-CLIENT_SECRET = "rQqkEF1lS9jLnOfwT2v17V7csMDp63Nlg6v8gLZZJd1dT95HET9nOwFoKgIWOK5R"
-THING_ID = "22d47625-dcfc-4b2b-881c-a2f62e3a942e"
+CLIENT_ID = "..."
+CLIENT_SECRET = "..."
+THING_ID = "..."
 PROPERTY_NAME = "selectedRoom"
 PROPERTY_ID = ""
 
