@@ -3,7 +3,7 @@
 #include <DHT.h>
 
 #define DHTPIN 2
-#define DHTTYPE DHT11   // nếu dùng DHT22 thì đổi thành DHT22
+#define DHTTYPE DHT11 
 
 DHT dhtSensor(DHTPIN, DHTTYPE);
 
