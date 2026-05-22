@@ -1,26 +1,24 @@
 #include <WiFiNINA.h>
 #include <ThingSpeak.h>
 #include <DHT.h>
-#include <Wire.h>
-#include <BH1750.h>
 
 #define DHTPIN 2
-#define DHTTYPE DHT22
+#define DHTTYPE DHT11   // nếu dùng DHT22 thì đổi thành DHT22
 
-char wifiName[] = "8Uganda";
-char wifiPassword[] = "Lmamlmam2025";
+DHT dhtSensor(DHTPIN, DHTTYPE);
 
-unsigned long myChannel = 3301549;
-const char* myAPI = "1SSHBGTZFP0I8E0G";
+char wifiName[] = "qdattt";
+char wifiPassword[] = "25092006";
+
+unsigned long myChannel = 3392155;
+const char* myAPI = "5LUNSX4JN8C2AJMK";
 
 WiFiClient wifiClient;
-DHT dhtSensor(DHTPIN, DHTTYPE);
-BH1750 lightMeter;
+
+const int lightPin = A0;
 
 void startSensors() {
   dhtSensor.begin();
-  Wire.begin();
-  lightMeter.begin();
 }
 
 void connectWifi() {
@@ -34,20 +32,28 @@ void connectWifi() {
   Serial.println("Connected");
 }
 
-void show(float temp, float lightLv) {
+void show(float temp, float humidity, int lightValue) {
   Serial.print("Temperature: ");
   Serial.print(temp);
   Serial.println(" C");
 
+  Serial.print("Humidity: ");
+  Serial.print(humidity);
+  Serial.println(" %");
+
   Serial.print("Light: ");
-  Serial.print(lightLv);
-  Serial.println(" lux");
+  Serial.println(lightValue);
 }
 
-void upload(float temp, float lightLv) {
+void upload(float temp, float humidity, int lightValue) {
   ThingSpeak.setField(1, temp);
-  ThingSpeak.setField(2, lightLv);
-  ThingSpeak.writeFields(myChannel, myAPI);
+  ThingSpeak.setField(2, lightValue);
+  ThingSpeak.setField(3, humidity);
+
+  int status = ThingSpeak.writeFields(myChannel, myAPI);
+
+  Serial.print("ThingSpeak status: ");
+  Serial.println(status);
 }
 
 void setup() {
@@ -59,15 +65,20 @@ void setup() {
 }
 
 void loop() {
-  float temp = dhtSensor.readTemperature();
-  float lightLv = lightMeter.readLightLevel();
-
-  if (isnan(temp)) {
-    Serial.println("Failed to read DHT22");
-  } else {
-    show(temp, lightLv);
-    upload(temp, lightLv);
+  if (WiFi.status() != WL_CONNECTED) {
+    connectWifi();
   }
- 
+
+  float temp = dhtSensor.readTemperature();
+  float humidity = dhtSensor.readHumidity();
+  int lightValue = analogRead(lightPin);
+
+  if (isnan(temp) || isnan(humidity)) {
+    Serial.println("Failed to read DHT sensor");
+  } else {
+    show(temp, humidity, lightValue);
+    upload(temp, humidity, lightValue);
+  }
+
   delay(30000);
 }
