@@ -1,0 +1,39 @@
+# SIT215 Assignment 3 — README
+**Student ID:** 224718805
+**Name:** Nguyen Quoc Dat
+**Date:** May 2026
+
+---
+
+## Files Included
+
+- `224718805__2_.ipynb` — main Jupyter notebook
+- `224718805_assign3integratedsystem_report.pdf` — assignment report
+- `224718805_README.md` — this file
+
+---
+
+## Required Libraries
+
+| Library | How to install |
+|---------|---------------|
+| `numpy` | `pip install numpy` |
+| `matplotlib` | `pip install matplotlib` |
+| `pandas` | `pip install pandas` |
+| `scikit-fuzzy` | `pip install scikit-fuzzy` |
+| `heapq` | built-in, no install needed |
+| `math` | built-in, no install needed |
+
+---
+
+## How to Run
+
+### Option 1 — Google Colab (recommended)
+1. Go to https://colab.research.google.com
+2. Upload `224718805__2_.ipynb`
+3. Click **Runtime → Run all**
+
+### Option 2 — Jupyter Notebook
+1. Install libraries: `pip install numpy matplotlib pandas scikit-fuzzy`
+2. Open `224718805__2_.ipynb` in Jupyter Notebook or JupyterLab
+3. Select **Kernel → Restart & Run All**
